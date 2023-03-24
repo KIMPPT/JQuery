@@ -54,9 +54,25 @@ function()
 });
 */
 
-console.log($("#number-btns>tbody>tr>td>button"));
-$("#number-btns tbody tr td button").on("click",
+console.log($("#number-btns button"));
+//배열로 처리하지 않고 바로 메소드를 이용해 모두 적용 할 수도 있다.
+//.css 앞에 this가 아닌 $("number-btns button")인 경우
+$("#number-btns button").on("click",
 function(e)
 {
-    $(this).css("color","red").prop("disabled","true");
+    $(e.target).css("color","red").prop("disabled","true");
 });
+
+/*자바스크립트로 짤 경우
+let btns=document.querySelectorAll("#number-btns button")
+for(let i=0;i<btns.length;i++)
+{
+    btns[i].addEventListener("clock",function(e)
+    {
+        e.target.style.color="red";
+        e.target.disabled="true";
+    });
+}
+
+
+*/
