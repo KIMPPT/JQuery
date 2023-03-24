@@ -25,10 +25,38 @@ function()
 {
     $("#header").toggleClass("hidden");
 });
-let checkbox=$("#todo").children().first();
+//todo의 input 에 접근해서 그 값에 따라서 디자인 변경
+$("#todo input[type='checkbox']").on("click",function(e)
+{
+    console.log(e.target.checked);
+
+    
+    if(e.target.checked){
+        $("#todo").css("color","gray");
+        $("#todo").addClass("checked");
+    }
+    else{
+        $("#todo").css("color","").removeClass("checked");
+        //2개로 써도 되고 위처럼 1개에 겹쳐서 써도 상관없다.
+    }
+    //this를 통해서 이벤트가 발생한 태그를 가져 올 수 있다.
+    console.log($(this).prop("checked"));
+    //.porp(속성이름)을 통해서 속성값을 가져 올 수 있다.
+});
+
+/*
+let checkbox=$("#todo");
 
 $("#todo").children().first().on("click",
 function()
 {
     $("#todo").css("color","green");
+});
+*/
+
+console.log($("#number-btns>tbody>tr>td>button"));
+$("#number-btns tbody tr td button").on("click",
+function(e)
+{
+    $(this).css("color","red").prop("disabled","true");
 });
